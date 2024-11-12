@@ -14,7 +14,11 @@ export default {
         botaoFuncional() {
             this.start = !this.start
             console.log(this.start)
-        }
+        },
+        ataque(){},
+        ataqueEspecial(){},
+        curar(){},
+        desistir(){}
     },
     computed: {
         botaoInicial() {
@@ -26,6 +30,5 @@ export default {
         }
     },
     watch: {
-
     }
 }

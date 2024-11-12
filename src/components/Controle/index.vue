@@ -2,10 +2,10 @@
 <template>
   <div id="controle">
       <button :style="botaoInicial" type="button" v-if="!start" @click="botaoFuncional">INICIAR NOVO JOGO</button>
-      <button type="button" v-if="start">ATAQUE</button>
-      <button type="button" v-if="start">ATAQUE ESPECIAL</button>
-      <button type="button" v-if="start">CURAR</button>
-      <button type="button" v-if="start">DESISTIR</button>
+      <button type="button" v-if="start" @click="ataque">ATAQUE</button>
+      <button type="button" v-if="start" @click="ataqueEspecial">ATAQUE ESPECIAL</button>
+      <button type="button" v-if="start" @click="curar">CURAR</button>
+      <button type="button" v-if="start" @click="desistir">DESISTIR</button>
   </div>
 </template>
   
@@ -16,7 +16,6 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  flex-wrap: wrap;
   width: 90%;
   height: 120px;
   box-shadow: 4px 4px 4px 4px #ccc;
@@ -25,7 +24,7 @@ button {
   width: 110px;
   height: 50px;
   font-size: 20px;
-  box-shadow: 2px 2px 2px 2px #ccc;
+  box-shadow: 3px 3px 3px 3px #ccc;
   border: none;
   border-radius: 5px;
 }
@@ -42,9 +41,9 @@ button:nth-child(3) {
   background-color: rgb(0, 156, 0);
   color: white;
 }
-button:hover {
-  cursor: pointer;
+button:active {
   box-shadow: none;
-  margin: 2px
+  margin-bottom: 2px;
+  margin-top: 4px;
 }
 </style>

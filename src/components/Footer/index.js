@@ -1,15 +1,8 @@
 export default {
     name: 'footer',
     components: {},
-    data: {
-    
-    },
-    methods: {
-    },
-    computed: {
-
-    },
-    watch: {
-
-    }
+    data: {},
+    methods: {},
+    computed: {},
+    watch: {}
 }

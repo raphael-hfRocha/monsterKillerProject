@@ -3,13 +3,17 @@
   <div id="header">
     <div>
         <h2>Jogador</h2>
-        <div class="barra"></div>
-        <span align="center">100%</span>
+        <div class="barraJogador">
+          <div :style="staminaJogador" class="corJogador"></div>
+        </div>
+        <span align="center">{{ staminaJogador.width }}</span>
     </div>
     <div>
         <h2>Monstro</h2>
-        <div class="barra"></div>
-        <span align="center">100%</span>
+        <div class="barraMonstro">
+          <div :style="staminaMonstro" class="corMonstro"></div>
+        </div>
+        <span align="center">{{ staminaMonstro.width }}</span>
     </div>
   </div>
 </template>
@@ -25,11 +29,31 @@
     height: 300px;
     box-shadow: 4px 4px 4px 4px #ccc;
 }
-.barra {
+h2 {
+  font-size: 40px;
+}
+span {
+  font-size: 20px;
+  font-weight: bold;
+}
+.barraJogador {
+    display: flex;
     width: 600px;
-    background-color: green;
     height: 30px;
     border: 1px solid black;
     margin-top: 20px;
+}
+.barraMonstro {
+    display: flex;
+    width: 600px;
+    height: 30px;
+    border: 1px solid black;
+    margin-top: 20px;
+}
+.corJogador {
+  background-color: green;
+}
+.corMonstro {
+  background-color: green;
 }
 </style>
