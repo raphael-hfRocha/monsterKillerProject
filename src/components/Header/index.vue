@@ -4,14 +4,14 @@
     <div>
       <h2>Jogador</h2>
       <div class="barraJogador">
-        <div class="vidaCheia" :class="{ vidaCheia: staminaJogador.width >= '20%' && staminaMonstro.width === '100%', vidaNoFim: staminaJogador.width < '20%' }" :style="{ width: staminaJogador.width }"></div>
+        <div class="vidaInicio" :class="barraClasse(staminaJogador.width)" :style="{ width: staminaJogador.width }"></div>
       </div>
       <span align="center">{{ staminaJogador.width }}</span>
     </div>
     <div>
       <h2>Monstro</h2>
       <div class="barraMonstro">
-        <div class="vidaCheia" :class="{ vidaCheia: staminaMonstro.width >= '20%' && staminaMonstro.width === '100%', vidaNoFim: staminaMonstro.width < '20%' }" :style="{ width: staminaMonstro.width }"></div>
+        <div class="vidaInicio" :class="barraClasse(staminaMonstro.width)" :style="{ width: staminaMonstro.width }"></div>
       </div>
       <span align="center">{{ staminaMonstro.width }}</span>
     </div>
@@ -50,10 +50,16 @@ span {
   border: 1px solid black;
   margin-top: 20px;
 }
+.vidaInicio {
+  background-color: green !important;
+}
 .vidaCheia {
-  background-color: green;
+  background-color: green !important;
 }
 .vidaNoFim {
-  background-color: red;
+  background-color: red !important;
+}
+.vidaNoFim2 {
+  background-color: rgb(255, 8, 8) !important;
 }
 </style>
