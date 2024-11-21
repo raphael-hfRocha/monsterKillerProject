@@ -7,18 +7,44 @@ export default {
             start: false,
             backgroundColor: '',
             width: '',
-            color: ''
+            color: '',
+            jogadorVida: 100,
+            monstroVida: 100
         };
     },
     methods: {
-        botaoFuncional() {
-            this.start = !this.start
-            console.log(this.start)
+        iniciarJogo() {
+            this.$emit('update-stamina', this.jogadorVida, this.monstroVida)
         },
-        ataque(){},
-        ataqueEspecial(){},
-        curar(){},
-        desistir(){}
+        botaoFuncional() {
+            this.start = !this.start;
+            this.iniciarJogo();
+        },
+        ataque() {
+            const jogadorAtaque = this.getRandomInt(5, 10);
+            const monstroAtaque = this.getRandomInt(5, 15);
+            this.jogadorVida = Math.max(0, this.jogadorVida - monstroAtaque);
+            this.monstroVida = Math.max(0, this.monstroVida - jogadorAtaque);
+            this.$emit('update-stamina', this.jogadorVida, this.monstroVida)
+        },
+        ataqueEspecial() {
+            const jogadorAtaque = this.getRandomInt(5, 15);
+            const monstroAtaque = this.getRandomInt(5, 10);
+            this.jogadorVida = Math.max(0, this.jogadorVida - monstroAtaque);
+            this.monstroVida = Math.max(0, this.monstroVida - jogadorAtaque);
+            this.$emit('update-stamina', this.jogadorVida, this.monstroVida)
+        },
+        curar() {
+            const jogadorVida = this.getRandomInt(5, 15);
+            const monstroAtaque = this.getRandomInt(5, 10);
+            this.jogadorVida = Math.max(0, (this.jogadorVida + jogadorVida) - monstroAtaque);
+            this.monstroVida = Math.max(0, this.monstroVida);
+            this.$emit('update-stamina', this.jogadorVida, this.monstroVida)
+        },
+        desistir() { },
+        getRandomInt(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
     },
     computed: {
         botaoInicial() {

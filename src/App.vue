@@ -2,10 +2,10 @@
 <template>
   <div id="app">
     <header>
-      <Header />
+      <Header :staminaJogador="staminaJogador" :staminaMonstro="staminaMonstro" />
     </header>
     <main>
-      <Controle />
+      <Controle @update-stamina="updateStamina"/>
     </main>
     <footer>
       <Footer />

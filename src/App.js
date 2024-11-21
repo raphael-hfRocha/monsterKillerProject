@@ -9,4 +9,20 @@ export default {
     Controle,
     Footer
   },
+  data() {
+    return {
+      staminaJogador: {
+        width: '100%'
+      },
+      staminaMonstro: {
+        width: '100%'
+      }
+    }
+  },
+  methods: {
+    updateStamina(jogadorStamina, monstroStamina) {
+      this.staminaJogador.width = jogadorStamina + '%'
+      this.staminaMonstro.width = monstroStamina + '%'
+    }
+  }
 };
