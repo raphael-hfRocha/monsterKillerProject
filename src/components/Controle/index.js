@@ -27,7 +27,7 @@ export default {
             const monstroAtaque = this.getRandomInt(5, 15);
             this.jogadorVida = Math.max(0, this.jogadorVida - monstroAtaque);
             this.monstroVida = Math.max(0, this.monstroVida - jogadorAtaque);
-            if(this.jogadorVida === 0 || this.monstroVida === 0) {
+            if (this.jogadorVida === 0 || this.monstroVida === 0) {
                 this.start = false;
             }
             this.$emit('update-stamina', this.jogadorVida, this.monstroVida)
@@ -37,7 +37,7 @@ export default {
             const monstroAtaque = this.getRandomInt(5, 10);
             this.jogadorVida = Math.max(0, this.jogadorVida - monstroAtaque);
             this.monstroVida = Math.max(0, this.monstroVida - jogadorAtaque);
-            if(this.jogadorVida === 0 || this.monstroVida === 0) {
+            if (this.jogadorVida === 0 || this.monstroVida === 0) {
                 this.start = false;
             }
             this.$emit('update-stamina', this.jogadorVida, this.monstroVida)
@@ -47,10 +47,10 @@ export default {
             const monstroAtaque = this.getRandomInt(5, 10);
             this.jogadorVida = Math.max(0, (this.jogadorVida + jogadorVida) - monstroAtaque);
             this.monstroVida = Math.max(0, this.monstroVida);
-            if(this.jogadorVida > 100) {
+            if (this.jogadorVida > 100) {
                 this.jogadorVida = 100;
             }
-            if(this.jogadorVida === 0) {
+            if (this.jogadorVida === 0) {
                 this.start = false;
             }
             this.$emit('update-stamina', this.jogadorVida, this.monstroVida)
