@@ -1,3 +1,4 @@
+
 export default {
     name: 'header',
     components: {},
@@ -7,23 +8,27 @@ export default {
     },
     data() {
         return {
-            vidaCheia: 'vidaCheia',
-            vidaNoFim: 'vidaNoFim',
-            vidaNoFim2: 'vidaNoFim2'
+            cor: '',
+            backgroundColor: '',
+            staminaJogador: { width: 100 },
+            staminaMonstro: { width: 100 }
         }
     },
-    methods: {
-        barraClasse(vida) {
-          if (vida <= '100%') {
-            return this.vidaCheia;
-          } else if (vida < '20%') {
-            return this.vidaNoFim;
-          } else if (vida < '10%') {
-            return this.vidaNoFim2;
-          }
-        }
-      },
+    methods: {},
     computed: {
+        barraJogador() {
+            return {
+                width: this.staminaJogador.width + '%',
+                backgroundColor: this.backgroundColor
+            }
+        },
+        barraMonstro() {
+            return {
+                width: this.staminaMonstro.width + '%',
+                backgroundColor: this.backgroundColor
+            }
+        }
     },
-    watch: {}
+    watch: {},
+
 }

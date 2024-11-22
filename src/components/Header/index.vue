@@ -4,16 +4,16 @@
     <div>
       <h2>Jogador</h2>
       <div class="barraJogador">
-        <div class="vidaInicio" :class="barraClasse(staminaJogador.width)" :style="{ width: staminaJogador.width }"></div>
+        <div :class="{ fullLife: staminaJogador.width <= 100, lifeAlmostEmpty: staminaJogador.width < 20 }" :style="barraJogador"></div>
       </div>
-      <span align="center">{{ staminaJogador.width }}</span>
+      <span align="center">{{ staminaJogador.width }}%</span>
     </div>
     <div>
       <h2>Monstro</h2>
       <div class="barraMonstro">
-        <div class="vidaInicio" :class="barraClasse(staminaMonstro.width)" :style="{ width: staminaMonstro.width }"></div>
+        <div :class="{ fullLife: staminaMonstro.width <= 100, lifeAlmostEmpty: staminaMonstro.width < 20 }" :style="barraMonstro"></div>
       </div>
-      <span align="center">{{ staminaMonstro.width }}</span>
+      <span align="center">{{ staminaMonstro.width }}%</span>
     </div>
   </div>
 </template>
@@ -25,7 +25,7 @@
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
-  width: 90%;
+  width: 95%;
   height: 300px;
   box-shadow: 4px 4px 4px 4px #ccc;
 }
@@ -50,16 +50,11 @@ span {
   border: 1px solid black;
   margin-top: 20px;
 }
-.vidaInicio {
-  background-color: green !important;
+
+.fullLife {
+  background-color: green;
 }
-.vidaCheia {
-  background-color: green !important;
-}
-.vidaNoFim {
-  background-color: red !important;
-}
-.vidaNoFim2 {
-  background-color: rgb(255, 8, 8) !important;
+.lifeAlmostEmpty {
+  background-color: red;
 }
 </style>
