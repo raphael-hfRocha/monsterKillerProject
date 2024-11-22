@@ -8,23 +8,28 @@ export default {
             backgroundColor: '',
             width: '',
             color: '',
-            jogadorVida: 100,
-            monstroVida: 100
+            jogadorVida: 0,
+            monstroVida: 0
         };
     },
     methods: {
-        iniciarJogo() {
-            this.$emit('update-stamina', this.jogadorVida, this.monstroVida)
-        },
         botaoFuncional() {
             this.start = !this.start;
-            this.iniciarJogo();
+            this.jogadorVida = 100;
+            this.monstroVida = 100;
+            this.iniciarJogo(this.jogadorVida, this.monstroVida);
+        },
+        iniciarJogo(jogadorVida, monstroVida) {
+            this.$emit('update-stamina', jogadorVida, monstroVida);
         },
         ataque() {
             const jogadorAtaque = this.getRandomInt(5, 10);
             const monstroAtaque = this.getRandomInt(5, 15);
             this.jogadorVida = Math.max(0, this.jogadorVida - monstroAtaque);
             this.monstroVida = Math.max(0, this.monstroVida - jogadorAtaque);
+            if(this.jogadorVida === 0 || this.monstroVida === 0) {
+                this.start = false;
+            }
             this.$emit('update-stamina', this.jogadorVida, this.monstroVida)
         },
         ataqueEspecial() {
@@ -32,6 +37,9 @@ export default {
             const monstroAtaque = this.getRandomInt(5, 10);
             this.jogadorVida = Math.max(0, this.jogadorVida - monstroAtaque);
             this.monstroVida = Math.max(0, this.monstroVida - jogadorAtaque);
+            if(this.jogadorVida === 0 || this.monstroVida === 0) {
+                this.start = false;
+            }
             this.$emit('update-stamina', this.jogadorVida, this.monstroVida)
         },
         curar() {
@@ -39,9 +47,17 @@ export default {
             const monstroAtaque = this.getRandomInt(5, 10);
             this.jogadorVida = Math.max(0, (this.jogadorVida + jogadorVida) - monstroAtaque);
             this.monstroVida = Math.max(0, this.monstroVida);
+            if(this.jogadorVida > 100) {
+                this.jogadorVida = 100;
+            }
+            if(this.jogadorVida === 0) {
+                this.start = false;
+            }
             this.$emit('update-stamina', this.jogadorVida, this.monstroVida)
         },
-        desistir() { },
+        desistir() {
+            this.start = false;
+        },
         getRandomInt(min, max) {
             return Math.floor(Math.random() * (max - min + 1)) + min;
         }
