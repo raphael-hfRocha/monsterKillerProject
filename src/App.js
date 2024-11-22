@@ -1,7 +1,6 @@
 import Header from "./components/Header/index.vue";
 import Controle from "./components/Controle/index.vue";
 import Footer from "./components/Footer/index.vue";
-import Resultado from "./components/Resultado/index.vue";
 
 
 export default {
@@ -9,8 +8,7 @@ export default {
   components: {
     Header,
     Controle,
-    Footer,
-    Resultado
+    Footer
   },
   data() {
     return {
