@@ -8,17 +8,42 @@
       />
       <template v-if="staminaJogador.width === 0 || staminaMonstro.width === 0">
         <div id="resultado">
-          <h2 style="color: red;" v-show="staminaJogador.width === 0" :hidden="staminaMonstro.width === 0">Você perdeu!</h2>
-          <h2 style="color: green;" v-show="staminaMonstro.width === 0" :hidden="staminaJogador.width === 0">Você ganhou!</h2>
-          <h2 style="color: blue;" v-show="staminaJogador.width === 0 && staminaMonstro.width === 0">Empate!</h2>
+          <h2
+            style="color: red"
+            v-show="staminaJogador.width === 0"
+            :hidden="staminaMonstro.width === 0"
+          >
+            Você perdeu!
+          </h2>
+          <h2
+            style="color: green"
+            v-show="staminaMonstro.width === 0"
+            :hidden="staminaJogador.width === 0"
+          >
+            Você ganhou!
+          </h2>
+          <h2
+            style="color: blue"
+            v-show="staminaJogador.width === 0 && staminaMonstro.width === 0"
+          >
+            Empate!
+          </h2>
         </div>
       </template>
     </header>
     <main>
-      <Controle @update-stamina="updateStamina" />
+      <Controle
+        @update-stamina="updateStamina"
+        @update-ataque="updateAtaque"
+        @limpar-memoria="limparMemoria"
+        ref="controle"
+      />
     </main>
     <footer>
-      <Footer />
+      <Footer
+        v-show="staminaJogador.width !== 100 && staminaMonstro.width !== 100"
+        :acoes="acoes"
+      />
     </footer>
   </div>
 </template>

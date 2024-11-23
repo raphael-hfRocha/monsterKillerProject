@@ -25,8 +25,9 @@
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
-  width: 95%;
+  width: 91%;
   height: 300px;
+  padding: 30px;
   box-shadow: 4px 4px 4px 4px #ccc;
 }
 h2 {
